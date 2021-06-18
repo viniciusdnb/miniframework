@@ -1,0 +1,19 @@
+{
+    "name": "viniciusdnb/portifolio",
+    "description": "meu protifolio de programacao",
+    "type": "project",
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "src\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "vini",
+            "email": "viniciusdnb@hotmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
