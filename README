@@ -1,0 +1,2 @@
+create symbolic link for the requests
+ex: /opt/lampp/htdocs/portifolio/public public

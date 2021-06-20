@@ -8,22 +8,28 @@
 	class Controller 
 	{
 		private $objDefin;
-		private $controller;
+		private $controllerClass;
+		private $controllerName;
 		private $action;
 		private $params;
 		
 		function __construct()
 		{
 			$this->objDefin = new Define;
+
+			$this->controllClass();
 		}
 
 		function controllClass()
 		{
-			if($this->objDefin->getControlName() == "home")
-			{
-				$this->controller = new HomeController;
+			$this->controllerName = $this->objDefin->getControlName();
 
-				$this->controller->index();
+			if($this->controllerName == "home")
+			{
+				$this->controllClass = new HomeController;
+
+				$this->controllClass->index();
+
 			}
 		}
 

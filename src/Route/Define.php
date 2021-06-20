@@ -15,7 +15,7 @@
 		function __construct()
 		{
 			$this->url = new Tratament();
-			
+
 			$this->explodeUrl();
 
 		}

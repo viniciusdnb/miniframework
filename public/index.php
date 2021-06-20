@@ -3,6 +3,6 @@
 
 	use src\Route\Controller;
 	$d = new Controller;
-	$d->controllClass();
+
 
 ?>

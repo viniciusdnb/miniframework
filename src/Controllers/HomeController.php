@@ -8,7 +8,7 @@ class HomeController extends Router
 {
 	public function index()
 	{
-		echo "ssh o";
+		echo "HomeController -> index()";
 	}
 }
 
