@@ -3,7 +3,8 @@
 	namespace src\Route;
 
 	use src\Route\Tratament;
-
+	
+	
 	class Define 
 	{
 		private $url;
@@ -15,6 +16,8 @@
 		function __construct()
 		{
 			$this->url = new Tratament();
+			
+			
 
 			$this->explodeUrl();
 
