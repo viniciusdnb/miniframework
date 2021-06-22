@@ -5,7 +5,7 @@ function request(url, type)
 	//type 1 = pra paginas
 	const xhttp = new XMLHttpRequest;
 
-	xhttp.open("GET", url);
+	xhttp.open("GET", url+"/?a=1");
 	
 	//requisição do tipo pagina
 	if(type == 1)

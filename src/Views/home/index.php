@@ -1,8 +1,3 @@
-<?php
-	echo "bem vindo ao HomeController -> index";
-$url = "json/index";
 
-	
-?>
 
-<button id="button" onclick="request('<?php echo $url?>',1)">jsonIndex</button>
+<button id="button" onclick="request('<?php echo $url['produto'] ?>',1)">produtos</button>

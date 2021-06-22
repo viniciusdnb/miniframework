@@ -6,4 +6,4 @@
 	<script src="js/request.js"></script>
 	<title>Document</title>
 </head>
-<html>
+<body>

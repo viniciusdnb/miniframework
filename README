@@ -1,2 +1,6 @@
 create symbolic link for the requests
 ex: /opt/lampp/htdocs/portifolio/public public
+
+para mandar uma requisção
+é necessario somente o nome da classe / nome do metodo.
+ex: produtos/index
