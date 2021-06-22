@@ -34,7 +34,7 @@
 
 			}else{
 				
-				$nameClassConrol = $this->controllerName . "Controller";
+				$nameClassConrol = ucfirst($this->controllerName) . "Controller";
 				$controllFIle = $nameClassConrol . ".php";
 
 				//verifica se o arquivo existe

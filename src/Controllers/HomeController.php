@@ -2,13 +2,14 @@
 
 namespace src\Controllers;
 
-use src\Route\Router;
 
-class HomeController extends Router
+use src\Route\RouterController;
+
+class HomeController extends RouterController
 {
 	public function index()
 	{
-		echo "HomeController -> index()";
+		$this->render("home/index");
 	}
 }
 
