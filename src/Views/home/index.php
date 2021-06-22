@@ -1,6 +1,6 @@
 <?php
 	echo "bem vindo ao HomeController -> index";
-$url = "http://localhost/public/json/index";
+$url = "json/index";
 
 	
 ?>

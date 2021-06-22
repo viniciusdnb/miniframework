@@ -8,7 +8,8 @@ class Config
 	function __construct()
 	{
 		define("DIR", __DIR__);
-		define("APP_HOST", "/public/");
+		
+		
 	}
 }
 

@@ -1,7 +1,7 @@
 <?php
 
 	echo "bem vindo ao Json index.";
-	$link = "http://localhost/public/json/dados";
+	$link = "json/dados";
 ?>
 
 
