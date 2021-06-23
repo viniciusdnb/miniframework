@@ -1,21 +1,75 @@
-
-#main{
-	border: 1px solid black;
-	width: 400px;
-	height: 300px;
-	display: flex;
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+*{
+	margin: 0;
+	text-decoration: none;
 	
 }
 
-.menu{
-	border: 1px solit black;
-	height: 300px;
-	width: 150px;
-	background-color:lightgrey;
+.main{
+	
 
 }
 
-.conteudo
+.home{
+	background-color: black;	
+	height: 400px;
+	color: green;
+	font-family: 'VT323', monospace;
+	display: flex;
+	flex-direction: row;
+	padding: 50px;
+	justify-content:center;
+}
+
+.opcoes{
+	border: solid 1px green;
+	border-radius: 5px;
+	width: 300px;
+	height: 300px;
+	display: flex;
+	flex-direction: row;
+	justify-content:center;
+	
+
+}
+
+.btn{	
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+	margin-left: 5px;	
+	display: flex;
+	flex-direction:column;
+	justify-content: center;
+	text-align:center;
+	border-radius: 5px;
+	position: relative;
+	
+	top: 125px;
+
+}
+.btn:hover{
+	cursor: pointer;
+}
+
+a{
+	color:rgb(52, 230, 17)	
+}
+
+.portifolio
 {
-	margin: 10px;
+	background-color:rgb(9, 56, 158);
+}
+
+.portifolio:hover
+{
+	background-color: rgb(2, 1, 51);
+}
+
+.restrito
+{
+	background-color: red;
+}
+.restrito:hover{
+	background-color: rgb(63, 2, 2);
 }
