@@ -7,5 +7,5 @@
 		}
 	?>
 </ul>
-<a href="http://<?php echo APP_HOST;?>">voltar</a>
+<a href="<?php echo APP_HOST;?>produto">voltar</a>
 </di>
