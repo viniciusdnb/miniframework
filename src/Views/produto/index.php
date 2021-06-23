@@ -1,5 +1,6 @@
-<h1>bem vindo ao menu produtos</h1>
 
+<div class="conteudo">
 
-<button id="button" onclick="request('<?php echo $url['r']?>', 0)">DADOS</button>
-<button id="button" onclick="request('<?php echo $url['c']?>', 1)">NOVO</button>
+<a href="http://<?php echo APP_HOST;?>">Voltar</a>
+<a href="http://<?php echo APP_HOST;?>produto/dados">Dados</a>
+</div>

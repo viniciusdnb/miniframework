@@ -1,0 +1,21 @@
+
+#main{
+	border: 1px solid black;
+	width: 400px;
+	height: 300px;
+	display: flex;
+	
+}
+
+.menu{
+	border: 1px solit black;
+	height: 300px;
+	width: 150px;
+	background-color:lightgrey;
+
+}
+
+.conteudo
+{
+	margin: 10px;
+}

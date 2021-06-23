@@ -16,7 +16,8 @@ abstract class RouterController{
 
 		//funcao que rendeniza as views
 		require_once DIR . "/Views/layout/head.php";
-		require_once DIR . "/Views/layout/main.php";		
+		require_once DIR . "/Views/layout/main.php";
+		require_once DIR . "/Views/layout/menu.php";		
 		require_once DIR . "/Views/" . $view . ".php";		
 		require_once DIR . "/Views/layout/footer.php";
 	}

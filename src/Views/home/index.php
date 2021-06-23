@@ -1,3 +1,1 @@
-
-
-<button id="button" onclick="request('<?php echo $url['produto'] ?>',1)">produtos</button>
+<h3>bem vindo a pagina inicial</h3>
