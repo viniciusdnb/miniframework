@@ -3,6 +3,9 @@
 namespace src\Route;
 
 use src\Route\Route;
+use src\Route\WebRoute;
+
+
 
 abstract class RouterController{
 	
@@ -11,8 +14,11 @@ abstract class RouterController{
 
 	function render($view)
 	{	
+		//envia dados para a view
 		$data = $this->getData();
-		$url = $this->getUrl();
+
+		//inclui funcoes auxiliares
+		include DIR . "/Libs/functions.php";			
 
 		//funcao que rendeniza as views
 		require_once DIR . "/Views/layout/head.php";

@@ -9,7 +9,7 @@ class Config
 	{
 		define("DIR", __DIR__);
 		
-		$producao = FALSE;
+		$producao = false;
 
 		if($producao)
 		{

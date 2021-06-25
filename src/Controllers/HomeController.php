@@ -8,11 +8,8 @@ use src\Route\WebRoute;
 
 class HomeController extends RouterController
 {
-
 	public function index()
 	{
-		
-		
 		$this->render("home/index");
 	}
 }

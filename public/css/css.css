@@ -4,44 +4,35 @@
 	text-decoration: none;
 	height: 100%;
 	width: 100%;
+
+}
+
+.home{		
 	font-family: VT323, monospace;
 	color: rgb(2, 158, 2);	
-}
-.main{	
 	background-color: black;
-
+	height: 100%;	
 }
-
-.home{
-	
-	height: 10%;	
-}
-.titulo{
-	
+.titulo{	
 	width: 70%;	
-	text-align: center;
-	position: relative;
+	height: 10%;
+	text-align: center;	
 	left: 15%;
 	top: 20px;
-	font-size: 30px;
-	
+	font-size: 30px;	
+	position: relative;
 }
 
 .opcoes{
-	text-align: center;
-	
+	text-align: center;	
 	width: 70%;
 	height: 100px;
-	top: 300px;	
 	position: relative;
-	
-	position: relative;
-	left: 15%;
-	
+	top: 20%;
+	left: 15%;		
 }
 
-.btn{
-	
+.btn{	
 	cursor: pointer;
 	border-radius: 5px;
 	height: 50px;
@@ -52,13 +43,12 @@
 	margin-left: 5px;
 }
 
-a{	
+.home a{	
+	color: rgb(2, 158, 2);
 	text-align: center;
 	position: relative;
 	top: 15px;
-	font-size: 18px;
-	
-	
+	font-size: 18px;	
 }
 
 .portifolio
