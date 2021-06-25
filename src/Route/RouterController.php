@@ -2,10 +2,9 @@
 
 namespace src\Route;
 
+
 use src\Route\Route;
-use src\Route\WebRoute;
-
-
+use src\Libs\Auth;
 
 abstract class RouterController{
 	
@@ -16,7 +15,8 @@ abstract class RouterController{
 	{	
 		//envia dados para a view
 		$data = $this->getData();
-
+		
+		
 		//inclui funcoes auxiliares
 		include DIR . "/Libs/functions.php";			
 

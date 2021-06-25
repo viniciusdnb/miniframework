@@ -4,9 +4,11 @@
 	use src\Route\Start;
 	use src\config;
 
+
 	try {
 		$config = new Config;
 		$start = new Start;
+		
 		
 	
 	} catch (\Exception $ex) {

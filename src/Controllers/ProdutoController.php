@@ -8,7 +8,8 @@ use src\Route\WebRoute;
 class ProdutoController extends RouterController
 {	
 	function index()
-	{		
+	{	
+		
 		$this->render("produto/index");
 	}
 

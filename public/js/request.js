@@ -38,3 +38,4 @@ function request(url, type)
 	xhttp.send();
 
 }
+

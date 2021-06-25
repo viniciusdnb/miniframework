@@ -1,0 +1,66 @@
+.protifolio{
+	background-color: rgb(197, 197, 197);		
+	display: inline-block;
+	text-align: center;
+	
+}
+
+.conteudo{
+	border: solid black 2px;
+	height: 100%;
+	width: 100%;
+	margin-top: 20px;
+
+}
+
+.cabecalho
+{
+	border: solid red 2px;
+	height: 30%;	
+}
+
+.cab{
+	border: solid green 2px;
+	display: inline-block;
+}
+
+.foto{
+	width: 20%;
+	position: relative;
+}
+
+.pfoto
+{
+	position: relative;
+	top: 45%;
+}
+
+.pperfil{
+	position: relative;
+	top: 45%;
+}
+.perfil{
+	width: 79%;
+	position: relative;
+	
+}
+
+.dados{
+	border: solid 2px rgb(21, 163, 156);
+	position: relative;
+	bottom: 100%;
+}
+
+.perf{	
+	float: right;	
+	
+}
+
+.comum{
+background-color: red;
+height: 50%;
+}
+.contato{
+	background-color: rosybrown;
+	height: 50%;
+}
