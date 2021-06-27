@@ -1,66 +1,70 @@
-.protifolio{
-	background-color: rgb(197, 197, 197);		
-	display: inline-block;
-	text-align: center;
+.flex-container
+{
+	border: solid black 1px;
+	height: auto;
+	width: auto;
+	display: flex;
+	margin: auto;
 	
 }
 
-.conteudo{
-	border: solid black 2px;
-	height: 100%;
-	width: 100%;
-	margin-top: 20px;
-
+.flex-item
+{	
+	height: 40vh;
+	margin: auto;
 }
 
-.cabecalho
+.box-foto
 {
-	border: solid red 2px;
-	height: 30%;	
-}
-
-.cab{
 	border: solid green 2px;
-	display: inline-block;
+	width: 30%;
 }
 
-.foto{
-	width: 20%;
-	position: relative;
-}
-
-.pfoto
+.box-dados
 {
-	position: relative;
-	top: 45%;
+	border: solid yellow 2px;
+	width: 70%;
 }
 
-.pperfil{
-	position: relative;
-	top: 45%;
-}
-.perfil{
-	width: 79%;
-	position: relative;
+@media (max-width: 600px) {
+	.flex-container{
+		flex-direction: column;
+		height: 60vh;
+	}
+
+	.flex-container-card{
+		width: 80%;
+	}
 	
+	.flex-item{
+		width: 100%;
+	}
 }
 
-.dados{
-	border: solid 2px rgb(21, 163, 156);
-	position: relative;
-	bottom: 100%;
-}
-
-.perf{	
-	float: right;	
+@media (min-width: 1200px){
+	.flex-container{
+		width: 80%;
 	
+	}
+
+	.flex-container-card{
+		width: 80%;
+	}
 }
 
-.comum{
-background-color: red;
-height: 50%;
+.flex-container-card
+{
+	border: solid 2px black;
+	height: 40vh;
+	display: flex;
+	flex-wrap: wrap;
+	height: auto;
+	margin: auto;
 }
-.contato{
-	background-color: rosybrown;
-	height: 50%;
+
+.flex-card{
+	border: solid 1px red;
+	width: 300px;
+	height: 300px;
+	margin: auto;
 }
