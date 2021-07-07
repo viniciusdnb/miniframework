@@ -56,14 +56,9 @@ class Model
 	$this->result = $this->baseModel->find($query);
 	
 	}
-/**@param bool $arr_composite
- * verifica se o array é compost
- * 
- * @param boll $arr_shift 
- * opcional para retirar a primeira posicao de array de clunas no caso id
- */
 
-	public function insert($values, bool $arr_composite, bool $arr_shift)
+
+	public function insert(array $values, bool $arr_shift)
 	{
 		//retuira sempre a primeira posição do arrey sendo a coluna id ta tabela
 		if(!$arr_shift)
@@ -74,16 +69,20 @@ class Model
 		//prepara as colunas e valores
 		$this->preparedColum = $this->prepareColumns($this->getColumns(), $arr_shift);
 		
-		
-		if($arr_composite)
+		//verifica se na posicao 1 do values contem outro array
+		if(is_array($values[1]))
 		{
 			for($i = 0; $i <  count($values); $i++)
 			{
 				$this->save($values[$i]);
 			}
-		}else{
+		}
+		else
+		{
 			$this->save($values);
 		}
+		
+	
 					
 	}
 

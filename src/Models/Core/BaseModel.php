@@ -25,6 +25,10 @@ class BaseModel extends CoreModel
 		return $result;
 	}
 
+	public function newUpdate(string $table, string $columns, array $values, string $where)
+	{
+		
+	}
 	
 }
 

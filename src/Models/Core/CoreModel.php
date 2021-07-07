@@ -35,23 +35,32 @@ abstract class CoreModel
 		
 			$params = $columns;
 			$columns = str_replace(":", "", $columns);
-			var_dump($values);
+		
 			try{
 				$this->connection->beginTransaction();
 
 				$stmt = $this->connection->prepare("INSERT INTO usuario ($columns) VALUES ($params)");
-				
-				$stmt->execute($values);
+			
+				$stmt->execute($values);						
 
-				$this->connection->commit();
+				return $stmt->rowCount();
 
 			}catch(PDOException $ex)
 			{
 				$this->connection->rollBack();
-				throw new Exception($ex->getMessage());
+				throw new Exception("Erro ao inserir " . $ex->getMessage());
+				return null;
 			}
 		
+		}else{
+			throw new Exception("Dados faltantes ao executar a funcao", 500);
+			return null;
 		}
+	}
+
+	function update($table, $columns, $values, $where = null)
+	{
+		
 	}
 }
 
