@@ -2,11 +2,11 @@
 
 namespace src\Models\Core;
 
-use src\Models\Core\CoreModel;
+use src\Models\Core\Core;
 
 //classe responsavel por retorno de resultado
 
-class BaseModel extends CoreModel
+class CallCore extends Core
 {
 	public function find(string $sql)
 	{
@@ -27,7 +27,7 @@ class BaseModel extends CoreModel
 
 	public function newUpdate(string $table, string $columns, array $values, string $where)
 	{
-		
+
 	}
 	
 }

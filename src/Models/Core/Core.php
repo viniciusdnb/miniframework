@@ -7,7 +7,7 @@ use PDO;
 use src\Libs\Connection;
 use PDOException;
 
-abstract class CoreModel
+abstract class Core
 {
 	private $connection;
 
@@ -41,8 +41,9 @@ abstract class CoreModel
 
 				$stmt = $this->connection->prepare("INSERT INTO usuario ($columns) VALUES ($params)");
 			
-				$stmt->execute($values);						
-
+				$stmt->execute($values);
+										
+				$this->connection->commit();
 				return $stmt->rowCount();
 
 			}catch(PDOException $ex)
@@ -60,7 +61,7 @@ abstract class CoreModel
 
 	function update($table, $columns, $values, $where = null)
 	{
-		
+
 	}
 }
 

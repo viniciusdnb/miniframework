@@ -2,7 +2,7 @@
 
 namespace src\Models\Core;
 
-use src\Models\Core\BaseModel;
+use src\Models\Core\CallCore;
 
 class Model 
 {
@@ -10,7 +10,7 @@ class Model
 	//classe que simplifica e automatiza os models
 	
 	private $result;
-	private $baseModel;
+	private $callCore;
 	private $columns;	
 	private $table;
 
@@ -23,7 +23,7 @@ class Model
 		$this->table = $table;
 		$this->columns = $columns;
 
-		$this->baseModel = new BaseModel;
+		$this->callCore = new CallCore;
 		$this->table = $table;
 		
 		
@@ -53,7 +53,7 @@ class Model
 			$query .= " WHERE " . $where;
 		}
 				
-	$this->result = $this->baseModel->find($query);
+	$this->result = $this->callCore->find($query);
 	
 	}
 
@@ -81,7 +81,6 @@ class Model
 		{
 			$this->save($values);
 		}
-		
 	
 					
 	}
@@ -91,7 +90,7 @@ class Model
 		//funcao que inicia o processo de salvamento
 		$preparedValues = $this->prepareValues($this->getColumns(), $values);
 		
-		$this->result = $this->baseModel->create($this->table, $this->preparedColum, $preparedValues);
+		$this->result = $this->callCore->create($this->table, $this->preparedColum, $preparedValues);
 	}
 
 	private function prepareColumns($columns, $arr_shift)
