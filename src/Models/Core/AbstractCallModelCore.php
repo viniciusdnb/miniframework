@@ -36,6 +36,24 @@ abstract class AbstractCallModelCore
 
 		$model->update($values, $where, $arr_shift);
 	}
+
+	/**
+	 * @param $var - int fara a operacao de exclusao pela coluna da chave primaria. string fara a opreação de exclusao pela clausura where
+	 */
+	function delete($var)
+	{
+		$model = new DeleteModel($this->table, $this->columns);
+
+		if(is_string($var))
+		{
+			$model->deleteWhere($var);
+		}
+
+		if(is_int($var))
+		{
+			$model->deleteId($var);
+		}
+	}
 }
 
 ?>

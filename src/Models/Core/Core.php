@@ -92,6 +92,31 @@ abstract class Core
 			return false;
 		}
 	}
+
+	function delete($table, $where)
+	{
+		if(!empty($table) && !empty($where))
+		{
+			$w = "WHERE " . $where;
+
+			try{
+				
+				$this->connection->beginTransaction();
+				$stmt = $this->connection->prepare("DELETE FROM $table $w");
+				$stmt->execute();				
+				$this->connection->commit();
+				return $stmt->rowCount();
+				
+			}catch(PDOException $ex)
+			{
+				$this->connection->rollback;
+				throw new Exception("Erro ao deletar " . $ex->getMessage() ." " . $ex->getCode(), 500);
+			}
+		}else
+		{
+			return null;
+		}
+	}
 }
 
 ?>

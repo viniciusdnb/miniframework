@@ -31,6 +31,14 @@ class CallCore extends Core
 
 		return $result;
 	}
+
+	public function newDelete(string $table, string $where)
+	{
+		$result = $this->delete($table, $where);
+
+		return $result;
+	}
+	
 	
 }
 
