@@ -13,8 +13,7 @@ class HomeController extends RouterController
 	{	echo "<pre>";
 			
 		$usuario = new UsuarioModel;
-		$usuario->insert([["", "karina@karina"], ["pai", "pai@pai"]]);
-	
+		$usuario->update(["updade", "update@update"], "idUsuario = 5");
 		//$this->render("home/index");
 	}
 }

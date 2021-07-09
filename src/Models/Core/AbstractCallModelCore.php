@@ -2,13 +2,16 @@
 
 namespace src\Models\Core;
 
-use src\Models\Core\Model;
 
-abstract class AbstractModel
+use src\Models\Core\SelectModel;
+use src\Models\Core\InsertModel;
+
+
+abstract class AbstractCallModelCore
 {
 	function select(string $where = null)
 	{
-		$model = new Model($this->table, $this->columns);
+		$model = new SelectModel($this->table, $this->columns);
 
 		$model->select($where);
 
@@ -21,10 +24,17 @@ abstract class AbstractModel
 	 */
 	function insert(array $values, bool $arr_shift = false)
 	{
-		$model = new Model($this->table, $this->columns);
+		$model = new InsertModel($this->table, $this->columns);
 			
 		$model->insert($values, $arr_shift);
 		
+	}
+
+	function update(array $values, string $where, bool $arr_shift = false)
+	{
+		$model = new UpdateModel($this->table, $this->columns);
+
+		$model->update($values, $where, $arr_shift);
 	}
 }
 

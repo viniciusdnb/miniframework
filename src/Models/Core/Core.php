@@ -2,10 +2,15 @@
 
 namespace src\Models\Core;
 
+use src\Libs\Connection;
 use Exception;
 use PDO;
-use src\Libs\Connection;
 use PDOException;
+
+/* 
+	objeto abstrato com funcao de insercao leitura delete e atualizacao de dados no banco de dados.
+	o coracao do CRUD
+*/
 
 abstract class Core
 {
@@ -61,7 +66,31 @@ abstract class Core
 
 	function update($table, $columns, $values, $where = null)
 	{
+		if(!empty($table) && !empty($columns) && !empty($values))
+		{
+			if($where)
+			{
+				$w = "WHERE " . $where;
+			}
 
+			try{
+					$this->connection->beginTransaction();
+					
+					$stmt = $this->connection->prepare("UPDATE $table SET $columns $w");
+					
+					$stmt->execute($values);
+					
+					$this->connection->commit();
+
+			}catch(PDOException $ex)
+			{
+				$this->connection->rollBack();
+				throw new Exception("Erro ao atualizar " . $ex->getMessage() . " " . $ex->getCode(), 500);
+			}
+			
+		}else{
+			return false;
+		}
 	}
 }
 

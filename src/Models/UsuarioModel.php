@@ -2,9 +2,9 @@
 
 namespace src\Models;
 
-use src\Models\Core\AbstractModel;
+use src\Models\Core\AbstractCallModelCore;
 
-class UsuarioModel extends AbstractModel
+class UsuarioModel extends AbstractCallModelCore
 {
 
 	protected $table = "usuario";

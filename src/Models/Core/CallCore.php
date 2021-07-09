@@ -4,7 +4,7 @@ namespace src\Models\Core;
 
 use src\Models\Core\Core;
 
-//classe responsavel por retorno de resultado
+//objeto responsavel por fazer ligacao ao core do crud e retornar algum tipo de resultado
 
 class CallCore extends Core
 {
@@ -18,7 +18,7 @@ class CallCore extends Core
 
 	}
 
-	public function create(string $table, string $columns, array $values)
+	public function newInsert(string $table, string $columns, array $values)
 	{
 		$result = $this->insert($table, $columns, $values);
 
@@ -27,7 +27,9 @@ class CallCore extends Core
 
 	public function newUpdate(string $table, string $columns, array $values, string $where)
 	{
+		$result = $this->update($table, $columns, $values, $where);
 
+		return $result;
 	}
 	
 }
