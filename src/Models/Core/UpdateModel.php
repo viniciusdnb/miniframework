@@ -8,7 +8,7 @@ class UpdateModel extends AbstractModelCore
 {
 	public function update(array $values, string $where, bool $arr_shift)
 	{
-		//retuira sempre a primeira posição do arrey sendo a coluna id ta tabela
+		//retira sempre a primeira posição do arrey sendo a coluna id ta tabela
 		if(!$arr_shift)
 		{
 			array_shift($this->columns);
