@@ -1,6 +1,0 @@
-<?php
-
-namespace src\Libs;
-
-
-?>

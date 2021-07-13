@@ -10,11 +10,8 @@ use src\Models\UsuarioModel;
 class HomeController extends RouterController
 {
 	public function index()	
-	{	echo "<pre>";
-			
-		$usuario = new UsuarioModel;
-		$usuario->delete("idUsuario = 10");
-		//$this->render("home/index");
+	{	
+		$this->render("home/index");
 	}
 }
 

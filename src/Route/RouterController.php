@@ -3,9 +3,6 @@
 namespace src\Route;
 
 
-use src\Route\Route;
-use src\Libs\Auth;
-
 abstract class RouterController{
 	
 	public $data = [];
@@ -19,11 +16,12 @@ abstract class RouterController{
 		
 		//inclui funcoes auxiliares
 		include DIR . "/Libs/functions.php";			
-
+		
 		//funcao que rendeniza as views
 		require_once DIR . "/Views/layout/head.php";
-		require_once DIR . "/Views/layout/main.php";
-		//require_once DIR . "/Views/layout/menu.php";		
+		require_once DIR . "/Views/layout/header.php";
+		require_once DIR . "/Views/layout/nav.php";
+		require_once DIR . "/Views/layout/main.php";				
 		require_once DIR . "/Views/" . $view . ".php";		
 		require_once DIR . "/Views/layout/footer.php";
 	}
