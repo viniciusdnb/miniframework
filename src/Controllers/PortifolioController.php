@@ -8,6 +8,11 @@ class PortifolioController extends RouterController
 {
 	function index()
 	{
+		echo "pagina inicial portifolio";
+	}
+
+	function portifolio()
+	{
 		$this->render("portifolio/index");
 	}
 }

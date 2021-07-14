@@ -3,7 +3,7 @@
 
 	use src\Route\Start;
 	use src\config;
-
+	session_start();
 
 	try {
 		$config = new Config;

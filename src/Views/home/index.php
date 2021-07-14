@@ -11,10 +11,15 @@
 	<div class="opcoes">
 		
 		<div class="btn portifolio">
-			<a href="<?= route('portifolio')?>">Portifolio</a>
+			<a href="<?= route('portifolio/portifolio')?>">Portifolio</a>
 		</div>	
 
-		
+		<div class="btn portifolio">
+			<a href="<?= route('portifolio')?>">Portifolio index</a>
+		</div>	
+		<div>
+			<a href="<?= route("login")?>">Restrito</a>
+		</div>
 
 	</div>
 </div>
