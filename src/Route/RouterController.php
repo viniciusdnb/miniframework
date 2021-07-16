@@ -15,7 +15,7 @@ abstract class RouterController{
 		
 		
 		//inclui funcoes auxiliares
-		include DIR . "/Libs/functions.php";			
+		require_once DIR . "/Libs/functions.php";			
 		
 		//funcao que rendeniza as views
 		require_once DIR . "/Views/layout/head.php";

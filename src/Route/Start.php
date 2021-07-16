@@ -5,10 +5,10 @@
 	use src\Route\Define;
 	use src\Controllers\HomeController;
 	use Exception;
-	use src\Route\Auth\Authentication;
+	use src\Route\Auth\AuthAccess;
 	use src\Route\Auth\User;
 
-class Start extends Authentication
+class Start extends AuthAccess
 	{
 		private $objDefin;
 		//private $controllerClass;

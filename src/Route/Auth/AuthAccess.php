@@ -4,7 +4,7 @@ namespace src\Route\Auth;
 
 
 
-abstract class Authentication
+abstract class AuthAccess
 {
 	protected $controllerName;
 	protected $action;
@@ -15,7 +15,7 @@ abstract class Authentication
 	protected function session()
 	{
 		//retorna se a sessao esta valida com o usuario
-		return $_SESSION["usuario"];
+		return isset($_SESSION["user"]);
 		
 	}
 
