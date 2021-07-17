@@ -20,6 +20,9 @@
 		<div>
 			<a href="<?= route("login")?>">Restrito</a>
 		</div>
+		<div>
+			<a href="<?= route("login/r")?>">Restrito</a>
+		</div>
 
 	</div>
 </div>

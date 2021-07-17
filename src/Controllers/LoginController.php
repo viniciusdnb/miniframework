@@ -10,6 +10,12 @@ class LoginController extends RouterController
 	{
 		$this->render("login/index");
 	}
+
+	public function r()
+	{
+	
+		$this->redirect("login/index");
+	}
 }
 
 ?>

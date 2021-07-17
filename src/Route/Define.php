@@ -69,6 +69,7 @@
 
 		function getControlName()
 		{
+			
 			return $this->controlName;
 		}
 

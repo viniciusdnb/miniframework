@@ -88,10 +88,10 @@ class Auth
 	private function setSession()
 	{
 	
-		$_SESSION["user"] = $this->getUser()->nameUser;
+		/*$_SESSION["user"] = $this->getUser()->nameUser;
 		$_SESSION["class"] = ["portifolio"];
 		$_SESSION["action"] = ["index", "portifolio"];
-		$_SESSION["auth"] = true;
+		$_SESSION["auth"] = true;*/
 	}
 
 }

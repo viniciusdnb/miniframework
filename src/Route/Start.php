@@ -6,129 +6,140 @@
 	use src\Controllers\HomeController;
 	use Exception;
 	use src\Route\Auth\AuthAccess;
-	use src\Route\Auth\User;
+	
 
 class Start extends AuthAccess
 	{
 		private $objDefin;
-		//private $controllerClass;
+		private $objectController;
+		private $actionController;
+		
 		
 		
 		function __construct()
 		{
 			$this->objDefin = new Define;
+			$this->controllerName = $this->objDefin->getControlName();
 			$this->action = $this->objDefin->getActionName();
 			$this->params = $this->objDefin->getParams();
-			$this->startControllClass();
+			$this->start();
 
-			$this->user = new User;
+			
 		}
 
-		function startControllClass()
+		private function start()
 		{
-			$this->controllerName = $this->objDefin->getControlName();
-
-			if($this->controllerName == "home" || $this->controllerName == "index")
-			{
-				$this->controllClass = new HomeController;
-
-				$this->controllClass->index();
-
-			}
-			elseif($this->controllerName == "login")
-			{
-				$this->login();
-			}
-			else			
-			{	
-				if($this->session())
+				
+					//verifica se o nome da classe pedido é publico
+				if($this->verifyPublicControl())
 				{
-					$nameClassConrol = ucfirst($this->controllerName) . "Controller";
-					$controllFIle = $nameClassConrol . ".php";
-
-					//verifica se o arquivo existe
-					if(!file_exists(DIR. "/Controllers/" . $controllFIle)){
-			
-					throw new Exception("Pagina nao encontrada Erro:. Desculpe o Arquivo não Existe", 404);		
-
-					}else{
-
-						//verifica se a classe existe passando o caminho do arquivo
-						if(!class_exists("\\src\Controllers\\".$nameClassConrol)){
-							
-							throw new Exception("Pagina não encontrada Erro.: Desculpe a Classe nao foi implementada", 501);			
-
-						}
-
-						$nameClassConrol =  "\\src\Controllers\\" . $nameClassConrol;
-						//instancia o objeto se nao houver erro
+					//alem da classe existir ela nao pode retornar erro
+					if($this->startObjectController($this->controllerName))
+					{
 						
-						$object = $this->verifyAccessClass($nameClassConrol);
-
-						if($object != null)
-						{							
-							$this->verifyAccessAction($object, $this->action, $this->params);	
-						}	
-					}	
-				}else{
-					
-					$this->login();
+						//inicia a acao do controller
+						$this->startActionController();
+					}
 
 				}
-			}
-		}	
-		
-		private function login()
-		{
-				$class = "\\src\Controllers\\"."LoginController";
-				$login = new $class;
-				$login->index();
-		}
-
-		private function verifyAccessClass($nameClassConrol)
-		{
-			if(!$this->accessClass())
-			{
-				$class = "\\src\Controllers\\"."HomeController";
-				$home = new $class;
-				$home->index();
-
-				return null;
-			}
-
-			return $object = new $nameClassConrol;
-
-		}
-
-		private function verifyAccessAction($object, $action, $params)
-		{
-
-			
-						//verifica se a acao esta setada e se tem acesso se nao tiver é redirecionado para o index da class
-						if(isset($action) && $this->accessAction())
-						{		
-
-							//verfica se o metodo existe e se acao esta setado
-							if(!method_exists($object, $action) && isset($action)){
+				//se a classe nao for public verifica se tem usuario setado.
+				elseif($this->userSession())
+				{		
 							
-								throw new Exception("Pagina não encontrada Erro.: Desculpe a Acao nao implementada", 406);
-						
-							}else{
-							
-								$object->{$action}($params);
-								return;
+					//verifica se o usuario tem acesso a classe pedido
+					if($this->accessClass())
+					{
+						if($this->startActionController($this->controllerName))
+						{
+							//verifica se o usuario tem acesso a acao pedido
+							if($this->accessAction())
+							{
+								$this->startActionController();	
 							}
-							
-							//verifica se existe a acao index na classe
-						}elseif(method_exists($object, "index")){
-							
-							$object->index();
-							return;
-
-						}else{
-							throw new Exception("Erro desconhecido", 500);
+							else
+							{
+								//retorna para o index do controller
+								$this->action = "index";
+								$this->startActionController();
+							}
 						}
+					}
+					else
+					{	
+						//retorna para a home da aplicacao
+						$this->startObjectController("home");
+						unset($this->action);		
+						$this->startActionController();
+					}
+				}
+				else
+				{					
+					//redireciona para o login controller
+					$this->startObjectController("login");
+					unset($this->action);					
+					$this->startActionController();
+				}
+			
+		}
+
+		private function startObjectController($nameClassControll)
+		{
+			$nameClassControll = ucfirst($nameClassControll) . "Controller";
+			$controllFile = $nameClassControll . ".php";
+
+			//verifica se o arquivo existe
+			if(!file_exists(DIR. "/Controllers/" . $controllFile)){
+			
+				throw new Exception("Pagina nao encontrada Erro:. Desculpe o Arquivo não Existe", 404);		
+
+			}else{
+
+				//verifica se a classe existe passando o caminho do arquivo
+				if(!class_exists("\\src\Controllers\\".$nameClassControll)){
+						
+					throw new Exception("Pagina não encontrada Erro.: Desculpe a Classe nao foi implementada", 501);			
+
+				}
+				else
+				{
+					$nameClassControll = "\\src\Controllers\\" . $nameClassControll;
+					$this->objectController = new $nameClassControll;
+					return true;
+				}
+
+			}
+		}		
+
+		private function getObjectController()
+		{
+			return $this->objectController;
+		}
+
+		private function startActionController()
+		{
+			//verifica se o metodo esta setado.
+			if(isset($this->action))
+			{
+				//verfica se o metodo existe e se acao esta setado
+				if(!method_exists($this->getObjectController(), $this->action) && isset($this->action)){
 					
+					throw new Exception("Pagina não encontrada Erro.: Desculpe a Acao nao implementada", 406);
+			
+				}else{
+				
+					$this->getObjectController()->{$this->action}($this->params);
+					return;
+				}
+				
+			//verifica se existe a acao index na classe
+			}elseif(method_exists($this->objectController, "index")){
+				
+				$this->getObjectController()->index();
+				return;
+
+			}else{
+				throw new Exception("Erro desconhecido", 500);
+			}
 		}
 
 	}
