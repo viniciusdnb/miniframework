@@ -26,7 +26,7 @@ class SelectModel extends AbstractModelCore
 		$query .=  " ";
 				
 		
-		$query .= "FROM " . strtolower($table);
+		$query .= "FROM " . $table;
 
 		if(!empty($where)){
 			$query .= " WHERE " . $where;

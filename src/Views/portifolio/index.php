@@ -1,3 +1,4 @@
+<?php use function src\Libs\route; ?>
 <div class="protifolio">
 	<div class="flex-container">
 		<div class="flex-item box box-foto">FOTO</div>
@@ -12,3 +13,5 @@
 		<div class="flex-card">LARAVEL</div>
 	</div>
 </div>
+
+<a href="<?= route("portifolio/logout")?>">Sair</a>

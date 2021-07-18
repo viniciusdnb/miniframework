@@ -6,7 +6,7 @@ class PublicControllers{
 	
 	static function publicControlls()
 	{
-		return [ "login"];
+		return ["login"];
 	}
 
 

@@ -1,5 +1,6 @@
+<?php use function src\Libs\route; ?>
 <div>
-	<form>
+	<form action="<?= route("login/auth") ?>" method="POST">
 		<div>
 			<label>usuario</label>
 			<input type="text" name="txt_user">

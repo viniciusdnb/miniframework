@@ -29,6 +29,7 @@ class Start extends AuthAccess
 
 		private function start()
 		{
+			
 				
 					//verifica se o nome da classe pedido é publico
 				if($this->verifyPublicControl())
@@ -46,22 +47,31 @@ class Start extends AuthAccess
 				elseif($this->userSession())
 				{		
 							
-					//verifica se o usuario tem acesso a classe pedido
+					//verifica se o usuario tem acesso a classe requisitada
 					if($this->accessClass())
 					{
-						if($this->startActionController($this->controllerName))
+						
+
+						if($this->startObjectController($this->controllerName))
 						{
-							//verifica se o usuario tem acesso a acao pedido
-							if($this->accessAction())
+							//verifica se a requisicao do usuario e uma funcao publica
+							if($this->verifyPublicAction())
 							{
 								$this->startActionController();	
 							}
+							//verifica se o usuario tem acesso a acao da requisicao
+							elseif($this->accessAction())
+							{					
+								$this->startActionController();	
+							}
 							else
-							{
-								//retorna para o index do controller
+							{		
+								//retorna para o index do controller								
 								$this->action = "index";
 								$this->startActionController();
 							}
+						}else{
+							
 						}
 					}
 					else
@@ -73,7 +83,8 @@ class Start extends AuthAccess
 					}
 				}
 				else
-				{					
+				{		
+					
 					//redireciona para o login controller
 					$this->startObjectController("login");
 					unset($this->action);					
@@ -86,7 +97,7 @@ class Start extends AuthAccess
 		{
 			$nameClassControll = ucfirst($nameClassControll) . "Controller";
 			$controllFile = $nameClassControll . ".php";
-
+		
 			//verifica se o arquivo existe
 			if(!file_exists(DIR. "/Controllers/" . $controllFile)){
 			
@@ -104,6 +115,7 @@ class Start extends AuthAccess
 				{
 					$nameClassControll = "\\src\Controllers\\" . $nameClassControll;
 					$this->objectController = new $nameClassControll;
+					
 					return true;
 				}
 

@@ -15,6 +15,13 @@ class PortifolioController extends RouterController
 	{
 		$this->render("portifolio/index");
 	}
+
+	function logout()
+	{
+		
+		session_destroy();
+		$this->redirect("home/index");
+	}
 }
 
 ?>

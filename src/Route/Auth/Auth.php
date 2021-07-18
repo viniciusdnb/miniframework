@@ -5,13 +5,17 @@ namespace src\Route\Auth;
 use Exception;
 use src\Models\UserModel;
 use src\Models\HashModel;
-use src\Models\PermUserModel;
+use src\Models\PermActionUserModel;
+use src\Models\PermClassUserModel;
 
 class Auth
 {
 	private $user;
 	private $hash;	
-	private $perm;
+	private $permClassModel;
+	private $permActionModel;
+	private $permClass;
+	private $permAction;
 
 	public function searchUser(string $name)
 	{
@@ -41,17 +45,62 @@ class Auth
 		$this->hash = $hashModel->select("id = '$hashId'")[0];
 	}	
 
-	private function searchPermUser($idUser)
+	private function searchPermClassUser($idUser)
 	{
-		$permModelUser = new PermUserModel;
+		$permClassModelUser = new PermClassUserModel;
 
-		$this->perm = $permModelUser->select("idUser = '$idUser'")[0];
+		$this->permClassModel = $permClassModelUser->select("idUser = '$idUser'");
+
+		$this->setPermClass();
 	}
 
-	private function getPerm()
+	private function setPermClass()
 	{
-		return $this->perm;
+		foreach($this->getPermClassModel() as $value)
+		{
+			$permClass[] = $value->descClassPerm;	
+		}
+
+		$this->permClass = $permClass;
 	}
+
+	private function getPermClass()
+	{
+		return $this->permClass;
+	}
+
+	private function getPermClassModel()
+	{
+		return $this->permClassModel;
+	}
+
+	private function searchPermActionUser($idUser)
+	{
+		$permActionModelUser = new PermActionUserModel;
+		$this->permActionModel = $permActionModelUser->select("idUser = '$idUser'");
+		$this->setPermAction();
+	}
+
+	private function setPermAction()
+	{
+		foreach($this->getPermActionModel() as $value)
+		{
+			$permAction[] = $value->descActionPerm;
+		}
+
+		$this->permAction = $permAction;
+	}
+	
+	private function getPermActionModel(){
+		return $this->permActionModel;
+	}
+
+	private function getPermAction()
+	{
+		return $this->permAction;
+	}
+
+
 
 	private function getUser()
 	{
@@ -79,19 +128,21 @@ class Auth
 			}
 		}
 		else
-		{
-			
+		{			
 			throw new Exception("Erro desconhecido ao verificar acesso de ususario", 500);
 		}
 	}
 
 	private function setSession()
 	{
-	
-		/*$_SESSION["user"] = $this->getUser()->nameUser;
-		$_SESSION["class"] = ["portifolio"];
-		$_SESSION["action"] = ["index", "portifolio"];
-		$_SESSION["auth"] = true;*/
+		$this->searchPermClassUser($this->user->idUser);
+		$this->searchPermActionUser($this->user->idUser);
+
+		//setar a sessao com os dados do usuario
+		$_SESSION["user"] = $this->getUser()->nameUser;
+		$_SESSION["class"] = $this->getPermClass();
+		$_SESSION["action"] = $this->getPermAction();
+		$_SESSION["auth"] = true;
 	}
 
 }

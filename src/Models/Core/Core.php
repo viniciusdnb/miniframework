@@ -23,6 +23,7 @@ abstract class Core
 
 	function select($sql)
 	{
+		
 		if(!empty($sql))
 		{			
 			try{
