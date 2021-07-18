@@ -13,7 +13,7 @@ class Config
 
 		if($producao)
 		{
-			define("APP_HOST", "https://indquatropontozero.com/");
+			define("APP_HOST", "https://localhost/public/");
 		
 		}else
 		{
