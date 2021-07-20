@@ -16,10 +16,20 @@ class LoginController extends RouterController
 
 	public function auth()
 	{
-		$user = filter_var($_POST["txt_user"], FILTER_SANITIZE_SPECIAL_CHARS);
-		$pass = filter_var($_POST["txt_pass"], FILTER_SANITIZE_SPECIAL_CHARS);
+		header("Content-Type: application/json; charset=UTF-8");
+		$form = json_decode($_POST["x"],false);
 
-		$login = new Login($user, $pass);
+		if(preg_match("/[a-zA-Z0-9]/", $form->user) && preg_match("/[a-zA-Z0-9]/", $form->pass)){
+			$user = filter_var($form->user, FILTER_SANITIZE_SPECIAL_CHARS);
+			$pass = filter_var($form->pass, FILTER_SANITIZE_SPECIAL_CHARS);
+			$login = new Login($user, $pass);
+		}else{
+			$this->redirect("");
+		}
+
+		
+
+		//
 		//iniciar a classe auth
 		//procurar pelo o usuario pelo nome
 		//verificar senha
