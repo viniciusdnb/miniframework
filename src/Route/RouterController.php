@@ -35,7 +35,7 @@ abstract class RouterController{
 		
 	}
 
-	function redirect($view)
+	function redirect($view = null)
 	{
 		//funcao que redireciona escrevendo no cabeçalho http
 		header('Location: '. APP_HOST .$view);

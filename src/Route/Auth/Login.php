@@ -15,7 +15,7 @@ class Login extends RouterController
 			if($auth->verifPass($pass))
 			{
 				//redirecionar para a pagina inicial da aplicacao
-				$this->redirect("portifolio/index");
+				$this->redirect("portifolio/portifolio");
 			}else{
 				$this->render("login/index");
 			}
