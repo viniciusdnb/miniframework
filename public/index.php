@@ -4,7 +4,6 @@
 	use src\Route\Start;
 	use src\config;
 	session_start();
-echo "<pre>";
 	try {
 		$config = new Config;
 		$start = new Start;
