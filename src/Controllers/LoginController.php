@@ -24,7 +24,7 @@ class LoginController extends RouterController
 			$pass = filter_var($form->pass, FILTER_SANITIZE_SPECIAL_CHARS);
 			$login = new Login($user, $pass);
 		}else{
-			$this->redirect("");
+			$this->renderAss("login/index");
 		}
 
 		

@@ -28,8 +28,7 @@ abstract class RouterController{
 
 	function renderAss($view)
 	{
-		$data = $this->getData();
-		$url = $this->getUrl();
+		require_once DIR . "/Libs/functions.php";
 				
 		require_once DIR . "/Views/" . $view . ".php";
 		

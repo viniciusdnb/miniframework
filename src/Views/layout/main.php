@@ -1,1 +1,1 @@
-<main>
+<main class="main">

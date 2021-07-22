@@ -17,7 +17,7 @@ class Login extends RouterController
 				//redirecionar para a pagina inicial da aplicacao
 				$this->redirect("portifolio/portifolio");
 			}else{
-				$this->render("login/index");
+				$this->renderAss("login/index");
 			}
 		}
 		else
