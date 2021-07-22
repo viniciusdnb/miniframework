@@ -1,11 +1,14 @@
+
 const form = document.querySelector("#login");
-	form.addEventListener("submit", login);
+
+form.addEventListener("submit", login)
+
 
 	function login(e)
 	{
 		e.preventDefault();
-		let user = form.querySelector("#txt_user").value;
-		let pass = form.querySelector("#txt_pass").value;
+		let user = form.querySelector("#user").value;
+		let pass = form.querySelector("#pass").value;
 
 		verify(user, pass);
 
@@ -13,7 +16,9 @@ const form = document.querySelector("#login");
 
 	function verify(user, pass)
 	{
-		if(!user.empty && !pass.empty)
+	
+		
+		if(user && pass)
 		{
 
 			const json = JSON.stringify({"user": user, "pass":pass});
@@ -23,12 +28,16 @@ const form = document.querySelector("#login");
 				
 				if(xmlhttp.status == 200)
 				{ //ao vir a resposta correta do servidor. vai inserir os dados vindo dentro da tag passada na querySelect;
-					document.querySelector(".container").innerHTML = this.responseText;
+					document.querySelector(".main").innerHTML = this.responseText;
+					
 				}
+			
 			}
 			xmlhttp.open(form.method, form.action);
 			xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xmlhttp.send("x="+json);
 			
+		}else{
+			alert("Atençao insira o nome do usuario e senha")
 		}
 	}
