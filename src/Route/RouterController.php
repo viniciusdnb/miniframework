@@ -20,16 +20,29 @@ abstract class RouterController{
 		//funcao que rendeniza as views
 		require_once DIR . "/Views/layout/head.php";
 		require_once DIR . "/Views/layout/header.php";
-		require_once DIR . "/Views/layout/nav.php";
+		//require_once DIR . "/Views/layout/nav.php";
+		$this->menu($view);
+		/*if(file_exists(DIR . "/Views/".$this->menu($view))){
+			require_once DIR . "/Views/".$this->menu($view);
+		}*/
 		require_once DIR . "/Views/layout/main.php";				
 		require_once DIR . "/Views/" . $view . ".php";		
 		require_once DIR . "/Views/layout/footer.php";
 	}
 
+	private function menu($view)
+	{
+		$dir = explode("/", $view);
+		if(file_exists(DIR . "/Views/".$dir[0] . "/menu.php"))
+		{
+			return require_once DIR . "/Views/".$dir[0] . "/menu.php";
+		}
+		
+	}
 	function renderAss($view)
 	{
 		require_once DIR . "/Libs/functions.php";
-				
+				$this->menu($view);
 		require_once DIR . "/Views/" . $view . ".php";
 		
 	}

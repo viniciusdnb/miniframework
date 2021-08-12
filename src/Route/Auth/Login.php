@@ -15,14 +15,15 @@ class Login extends RouterController
 			if($auth->verifPass($pass))
 			{
 				//redirecionar para a pagina inicial da aplicacao
-				$this->redirect("portifolio/portifolio");
+				//primeira classe é o que o usuario tem acesso em sua aplicacao
+				$this->redirect($_SESSION["class"][0] . "/index");
 			}else{
-				$this->renderAss("login/index");
+				$this->redirect("login/index");
 			}
 		}
 		else
 		{
-			$this->render("login/index");
+			$this->redirect("login/index");
 		}
 	}
 
